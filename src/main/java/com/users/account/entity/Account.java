@@ -31,15 +31,15 @@ public class Account {
     public Account(String name, String lname, String email, String address, String phone, String country, String state, String logo, int cr_number, String password) {
         this.id = UUID.randomUUID().toString();
         this.name = name;
-        this.lname = lname == "" ? "" : lname;
+        this.lname = (lname == "" || lname == null) ? "" : lname;
         this.email = email;
-        this.address = address == "" ? "" : address;
-        this.phone = phone == "" ? "" : phone;
-        this.country = country == null ? "India" : country;
-        this.state = state == null ? "Rajasthan" : state;
-        this.logo = logo == "" ? "" : logo;
+        this.address = address == "" || address == null ? "" : address;
+        this.phone = phone == "" || phone == null? "" : phone;
+        this.country = country == null || country == null ? "India" : country;
+        this.state = state == "" || state == null? "Rajasthan" : state;
+        this.logo = logo == "" || logo == null? "" : logo;
         this.cr_number = cr_number;
-        this.password = password == "" ? "admin" + new Random().nextInt(0, 5) : password;
+        this.password = password == "" || password == null ? "admin" + new Random().nextInt(0, 5) : password;
         this.status = 0;
         this.timestamp = Long.parseLong(String.valueOf(System.currentTimeMillis() / 1000));
     }
